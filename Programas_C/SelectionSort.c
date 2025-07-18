@@ -1,53 +1,55 @@
 /*
     Autor:Ryan Rocha
     Data: 17/07/2025
-    DescriÁ„o :Implementando o algoritmo de ordenaÁ„o selection sort.
+    Descri√ß√£o :Implementando o algoritmo de ordena√ß√£o selection sort.
 
 */
 
-//Sess„o de importaÁ„o
+//Sess√£o de importa√ß√£o
 #include <stdio.h>
 #include <stdlib.h>
 
-//Sess„o de prototipaÁ„o
+//Sess√£o de prototipa√ß√£o
 void selectionSort(int *, int);
 
 
 int main()
 {
-    int vet, elem;
+    int* vet, elem;
 
     printf("Digite a quantidade de elementos do vetor: \n");
     scanf("%d", &elem);
 
 
-    vet = (int*) malloc(elem * sizeof(int)); //Alocando espaÁo de memÛria suficiente na vari·vel
+    vet = (int*) malloc(elem * sizeof(int)); //Alocando espa√ßo de mem√≥ria suficiente na vari√°vel
 
-    //MemÛria alocada corretamente
+    //Mem√≥ria alocada corretamente
     if(vet != NULL){
         selectionSort(vet, elem);
     }
-    //Erro na alocaÁ„o da memÛria
+    //Erro na aloca√ß√£o da mem√≥ria
     else{
         printf("Erro na alocacao da memoria");
         return 1;
     }
 
+    free(vet);
+    
     return 0;
 
 } //fim da main
 
 
 
-//FunÁ„o que implementa o algoritmo que ordena os n˙meros
+//Fun√ß√£o que implementa o algoritmo que ordena os n√∫meros
 void selectionSort(int * vet, int elem){
 
     int i = 0, j = 0, h = 0;
-    int aux = 0, comp = 0; trocas = 0;
+    int aux = 0, comp = 0, trocas = 0;
 
     for(i = 0; i < elem; i++)
     {
-        vet[i] = rand() % 1000; //Gerando n˙meros aleatÛrios entre 0 e 1000 para cada Ìndice do vetor
+        vet[i] = rand() % 1000; //Gerando n√∫meros aleat√≥rios entre 0 e 1000 para cada √≠ndice do vetor
     }
 
     //Vetor DESORGANIZADO
@@ -59,20 +61,20 @@ void selectionSort(int * vet, int elem){
     //Selection Sort
     for(i = 0; i < elem - 1; i++)
     {
-        j = i; // j comeÁa com 0 depois 1, 2, 3...
+        j = i; // j come√ßa com 0 depois 1, 2, 3...
         h = 1;
 
        while(j + h < elem){
 
             comp++;
-            if(vet[j] > vet[j + h]) //j + h prÛximo Ìndice do vetor a ser comparado com o atual menor Ìndice
+            if(vet[j] > vet[j + h]) //j + h pr√≥ximo √≠ndice do vetor a ser comparado com o atual menor √≠ndice
             {
                 j = j + h;
             }
             else
                 h++;
        }
-        if(i != j){ //apenas faz troca entre Ìndices diferentes
+        if(i != j){ //apenas faz troca entre √≠ndices diferentes
 
             aux = vet[j];
             vet[j] = vet[i];
@@ -91,9 +93,7 @@ void selectionSort(int * vet, int elem){
     printf("Total de comparacoes: %d\n", comp);
     printf("Total de trocas: %d\n", trocas);
 
-    free(vet);
-
-
+    
 } //fim do algoritmo
 
 
