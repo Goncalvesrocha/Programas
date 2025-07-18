@@ -1,15 +1,15 @@
 /*
     Autor:Ryan Rocha
     Data: 17/07/2025
-    DescriÁ„o :Implementando o algoritmo de ordenaÁ„o insertion sort
+    Descri√ß√£o :Implementando o algoritmo de ordena√ß√£o insertion sort
 
 */
 
-//Sess„o de importaÁ„o
+//Sess√£o de importa√ß√£o
 #include <stdio.h>
 #include <stdlib.h>
 
-//Sess„o de prototipaÁ„o
+//Sess√£o de prototipa√ß√£o
 void insertionSort(int *, int);
 
 
@@ -21,24 +21,26 @@ int main()
     scanf("%d", &elem);
 
 
-    vet = (int*) malloc(elem * sizeof(int)); //Alocando espaÁo de memÛria suficiente na vari·vel
+    vet = (int*) malloc(elem * sizeof(int)); //Alocando espa√ßo de mem√≥ria suficiente na vari√°vel
 
-    //MemÛria alocada corretamente
+    //Mem√≥ria alocada corretamente
     if(vet != NULL){
         insertionSort(vet, elem);
     }
-    //Erro na alocaÁ„o da memÛria
+    //Erro na aloca√ß√£o da mem√≥ria
     else{
         printf("Erro na alocacao da memoria");
         return 1;
     }
 
+    free(vet);
+    
     return 0;
 
 } //fim da main
 
 
-//FunÁ„o que implementa o algoritmo
+//Fun√ß√£o que implementa o algoritmo
 void insertionSort(int * vet, int elem){
 
     int i, j;
@@ -47,7 +49,7 @@ void insertionSort(int * vet, int elem){
 
     for(i = 0; i < elem; i++)
     {
-        vet[i] = rand() % 1000; //Gerando n˙meros aleatÛrios entre 0 e 1000 para cada Ìndice do vetor
+        vet[i] = rand() % 1000; //Gerando n√∫meros aleat√≥rios entre 0 e 1000 para cada √≠ndice do vetor
     }
 
     //Vetor DESORGANIZADO
@@ -65,7 +67,7 @@ void insertionSort(int * vet, int elem){
         {
             comp++;
 
-            int aux; //vari·vel local que permite a troca dos vetores
+            int aux; //vari√°vel local que permite a troca dos vetores
 
             aux = vet[j];
             vet[j] = vet[j + 1];
@@ -74,7 +76,7 @@ void insertionSort(int * vet, int elem){
             j--;
         }
         if (j >= 0)
-            comp++; // conta a comparaÁ„o que quebrou o while
+            comp++; // conta a compara√ß√£o que quebrou o while
     }
 
       //Vetor ORGANIZADO
@@ -86,8 +88,6 @@ void insertionSort(int * vet, int elem){
 
     printf("Total de comparacoes: %d\n", comp);
     printf("Total de trocas: %d\n", trocas);
-
-    free(vet);
 
 
 } //fim do algoritmo
