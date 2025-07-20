@@ -47,6 +47,8 @@ void selectionSort(int * vet, int elem){
     int i = 0, j = 0, h = 0;
     int aux = 0, comp = 0, trocas = 0;
 
+    srand(time(NULL));
+
     for(i = 0; i < elem; i++)
     {
         vet[i] = rand() % 1000; //Gerando números aleatórios entre 0 e 1000 para cada índice do vetor
