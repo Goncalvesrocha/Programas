@@ -47,6 +47,8 @@ void insertionSort(int * vet, int elem){
     int trocas = 0;
     int comp = 0;
 
+    srand(time(NULL));
+
     for(i = 0; i < elem; i++)
     {
         vet[i] = rand() % 1000; //Gerando números aleatórios entre 0 e 1000 para cada índice do vetor
