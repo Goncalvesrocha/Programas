@@ -8,6 +8,7 @@
 //Sessão de importação
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //Sessão de prototipação
 void selectionSort(int *, int);
