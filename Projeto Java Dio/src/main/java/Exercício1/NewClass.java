@@ -59,7 +59,7 @@ public class NewClass {
             System.out.println(cupom.exibirPreco());
         }
         else
-            System.out.println("Opcao invalida! KKKKK.\n Como assim " + pessoas + " PESSOAS?KKKKKKKKK LOL");
+            System.out.println("Opcao invalida!");
         
     }
     
