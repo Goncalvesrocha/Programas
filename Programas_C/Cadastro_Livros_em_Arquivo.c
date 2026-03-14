@@ -29,6 +29,7 @@ int criarArquivo(FILE*);
 int escreverArquivo(FILE*);
 char* lerArquivo(FILE*);
 int excluirArquivo(FILE*);
+void buscarPorCodigoArquivo(FILE*, int);
 
 int main()
 {
@@ -41,7 +42,7 @@ int main()
         }
         printf("\n1 - Arquivo Pronto!\n\n");
        
-    printf("ESCOLHA:\n\n(1)Escrever No Arquivo \n(2)Ler Arquivo \n(3)Excluir do Arquivo\n\n>");
+    printf("ESCOLHA:\n\n(1)Escrever No Arquivo \n(2)Ler Arquivo \n(3)Buscar Livro por Codigo\n(4)Excluir do Arquivo\n\n>");
     scanf("%d", &escolha);
 
     switch(escolha){
@@ -60,11 +61,17 @@ int main()
                 printf("\n2 - Leu o Arquivo!\n");
              break;
         case 3:
+                printf("Digite o codigo:");
+                int num;
+                scanf("%d", &num);
+                buscarPorCodigoArquivo(f, num);
+            break;
+        case 4:
              if(excluirArquivo(f) == 1){
-                    printf("\n3 - Erro na Exclusao do Arquivo. Programa Finalizando...\n");
+                    printf("\n4 - Erro na Exclusao do Arquivo. Programa Finalizando...\n");
                     return 1;
                 }
-                printf("\n3 - Excluiu o Arquivo!\n");
+                printf("\n4 - Excluiu o Arquivo!\n");
             break;
         default:
                 printf("\nNenhuma opcao valida foi selecionada!");
@@ -148,6 +155,30 @@ char* lerArquivo(FILE* f)
         }
         
         return conteudo;
+}
+
+void buscarPorCodigoArquivo(FILE* f, int id)
+{
+    int i = 0;
+    f = fopen("Livros.txt", "r"); //Modo Leitura
+    if(f == NULL){
+        printf("\nErro, impossivel fazer Leitura. Resultado: NULL");
+        exit(1);
+    }
+
+    char conversao = id + '0'; // Pega o valor de id, por exemplo 1 e transforma em '1'
+
+    while(i < 10)
+    {
+        fgets(conteudo, 70, f);
+        if(conteudo[0] == conversao){  //Compara o primeiro elemento do array que armazena Livro e checa se o id é o mesmo
+            printf("%s \n", conteudo); //Imprime o Livro com o id procurado
+            return; 
+        }
+        conteudo[0] = '\0';
+        i++;
+    }
+    printf("\n\nLivro NAO FOI ENCONTRADO. Verifique o CODIGO digitado\n\n");
 }
 
 int excluirArquivo(FILE *f)
